@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Notas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="session.user.id_rol == 2">
+  <h2>&nbsp;&nbsp; Selecciona un curso:</h2>
+  <ion-card *ngFor="let subject of subjects">
+    <ion-item routerLink="/upload-grades"  [queryParams]="{ subject: subject.code_subject }" class="ion-activated">
+      <ion-icon name="book" slot="start"></ion-icon>
+      <ion-label>{{subject.name}}</ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>
+<ion-content *ngIf="session.user.id_rol == 1">
+  <h1>Selecciona un curso:</h1>
+  <ion-card *ngFor="let subject of subjects">
+    <ion-item routerLink="/show-grades"  [queryParams]="{ subjectCode: subject.code_subject, subject: subject.name }" class="ion-activated">
+      <ion-icon name="book" slot="start"></ion-icon>
+      <ion-label>{{subject.name}}</ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>
+<app-nav-menu></app-nav-menu>

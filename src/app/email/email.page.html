@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Soporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form style="height: 90%;">
+    <ion-item lines="full">
+      <ion-label position="floating">Asunto</ion-label>
+      <ion-input type="text" #subject required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Mensaje</ion-label>
+      <ion-textarea type="text" #message required rows=5></ion-textarea>
+    </ion-item>
+    <br />
+    <ion-button type="submit" expand="block" color="primary" (click)="sendMail(subject.value, message.value)">Enviar
+      mensaje</ion-button>
+  </form>
+
+<app-nav-menu></app-nav-menu>
+</ion-content>

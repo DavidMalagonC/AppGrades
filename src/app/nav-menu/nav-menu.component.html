@@ -1,0 +1,29 @@
+<!-- <ion-tabs #tabs (ionTabsDidChange)="setCurrentTab()"> -->
+  <ion-tab-bar slot="bottom" color="primary">
+
+    <ion-tab-button routerLink="/profile" (click)="selectProfile()" [ngClass]="{'white': profile}">
+      <ion-icon name="person-circle"></ion-icon>
+      <ion-label>Perfil</ion-label>
+    </ion-tab-button>
+
+
+    <ion-tab-button routerLink="/grades" (click)="selectGrades()" [ngClass]="{'white': grades}">
+      <selected-tab></selected-tab>
+      <ion-icon name="book-outline"></ion-icon>
+      <ion-label>Notas</ion-label>
+      <ion-badge>6</ion-badge>
+    </ion-tab-button>
+
+   
+
+    <ion-tab-button  routerLink="/report" (click)="selectReport()" [ngClass]="{'white': report}">
+      <ion-icon name="bar-chart-outline"></ion-icon>
+      <ion-label translucent>Reporte</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/email" class="white">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>Soporte</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+<!-- </ion-tabs> -->

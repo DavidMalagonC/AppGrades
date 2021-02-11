@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Reporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="height: 85%;">
+    <!-- <h1>&nbsp;Promedio acumulado</h1>
+    <canvas id="realtime" height="300px">{{ chart }}</canvas> -->
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title color="primary">Promedio General</ion-card-title>
+        
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="ion-activated">
+          <ion-text color="secondary">
+          <h1 >{{average}}</h1>
+          </ion-text>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+    <ion-card >
+      <ion-card-header>
+        <ion-card-title color="primary">Promedio por curso</ion-card-title>
+        
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item class="ion-activated" style="color: primary" *ngFor="let subject of averages">
+          <ion-text color="secondary">
+          <h1 >{{subject.Materia}}: &nbsp;</h1>
+        </ion-text>
+        <ion-text color="success">
+          <h2 >{{subject.Promedio}}</h2>
+        </ion-text>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+<ion-footer>
+  <app-nav-menu></app-nav-menu>
+</ion-footer>
+
+</ion-content>

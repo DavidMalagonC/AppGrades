@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Subir nota</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content *ngIf="session.user.id_rol == 2">
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Concepto</ion-label>
+      <ion-input type="text" #course required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Nota</ion-label>
+      <ion-input type="number " #grade required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label >Estudiante:</ion-label>
+      <select #code>
+        <option *ngFor="let student of students" [value]="student.code">
+          {{ student.name }}
+        </option>
+      </select>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" (click)="uploadGrade(grade.value, course.value, code.value)" expand="block">Guardar Nota</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>  
+  <app-nav-menu></app-nav-menu>
+</ion-content>
