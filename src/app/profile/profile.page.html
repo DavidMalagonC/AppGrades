@@ -1,22 +1,31 @@
-<ion-header>
+<ion-header routerLink="this.session ? '/profile' : '/login' " > 
   <ion-toolbar color="primary">
-    <ion-title>Perfil</ion-title>
+    <ion-title>
+      <p>Perfil
+        <app-nav-menu style="align-content: right; float: right;"></app-nav-menu>
+        <ion-button (click)="logOut()" style="justify-content: end;">
+          <ion-icon name="exit" slot="start"></ion-icon>Cerrar sesión
+        </ion-button>
+      </p>
+     
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div style="height: 85%;">
+  <div class="center2">
     <ion-card>
       <ion-card-header>
         <ion-card-subtitle>Estudiante</ion-card-subtitle>
         <ion-card-title>{{session.user.name}} {{session.user.lastname}}</ion-card-title>
         <br />
-        <img src="../../assets/img/perfil.webp" width="70%" class="center" />
+        <img src="../../assets/img/perfil.webp" width="20%" class="center" />
       </ion-card-header>
     </ion-card>
 
     <ion-button (click)="presentModal()" class="center">
-      <ion-icon name="person-circle" slot="start"></ion-icon>Datos Personales</ion-button>
+      <ion-icon name="person-circle" slot="start"></ion-icon>Datos Personales
+    </ion-button>
     <ion-card>
       <ion-item href="#" class="ion-activated">
         <ion-icon name="wifi" slot="start"></ion-icon>
@@ -35,9 +44,5 @@
     </ion-card>
     <ion-card>
     </ion-card>
-    <ion-button (click)="logOut()" style="justify-content: end;">
-      <ion-icon name="exit" slot="start"></ion-icon>Cerrar sesión
-    </ion-button>
   </div>
-  <app-nav-menu></app-nav-menu>
 </ion-content>

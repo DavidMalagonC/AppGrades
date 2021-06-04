@@ -1,17 +1,20 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>{{subject}}</ion-title>
+    <ion-title>
+      <p>{{subject}}
+        <app-nav-menu style="align-content: right; float: right;"></app-nav-menu>
+      </p>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div style="height: 85%;">
-  <ion-card *ngFor="let grade of grades" >
-  <ion-item  class="ion-activated">
-    <ion-icon name="wifi" slot="start"></ion-icon>
-    <ion-label>{{grade.name}}: {{grade.grade_value}}</ion-label>
-  </ion-item>
-</ion-card>
-</div>
-<app-nav-menu></app-nav-menu>
+  <div class="center2">
+    <ion-card *ngFor="let grade of grades">
+      <ion-item class="ion-activated">
+        <ion-icon name="wifi" slot="start"></ion-icon>
+        <ion-label>{{grade.name}}: {{grade.grade_value}}</ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
 </ion-content>

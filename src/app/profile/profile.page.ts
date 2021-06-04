@@ -18,7 +18,11 @@ export class ProfilePage implements OnInit {
   session: Session;
 
   ngOnInit() {
+    
     this.session = this.sessionService.getSessionLogged();
+    if(null == this.session){
+      this.logOut;
+    }
   }
 
   async presentModal() {

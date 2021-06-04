@@ -4,15 +4,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form>
-    <ion-item lines="full">
-      <ion-label position="floating">Email</ion-label>
+<ion-content style="justify-content: center;">
+  <form style="max-width: 80%;  padding-left: 25%; padding-top: 10%;">
+    <ion-item >
+      <ion-label position="floating">Correo electronico</ion-label>
       <ion-input type="text" #email required></ion-input>
     </ion-item>
     <ion-item lines="full">
-      <ion-label position="floating">Password</ion-label>
+      <ion-label position="floating">Contraseña</ion-label>
       <ion-input type="password" #password required></ion-input>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label position="floating">Tu carita</ion-label>
+      <ion-input type="file" capture="camera" required></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>

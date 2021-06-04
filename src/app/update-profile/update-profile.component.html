@@ -2,7 +2,7 @@
   <ion-toolbar color="primary">
     <ion-title>Datos personales</ion-title>
     <ion-buttons slot="end">
-      <ion-button onclick="dismissModal()">Close</ion-button>
+      <!-- <ion-button onclick="dismissModal()">Close</ion-button> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -27,11 +27,11 @@
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Codigo</ion-label>
-      <ion-input type="password" #code required value={{session.user.code}}></ion-input>
+      <ion-input type="number" #code required value={{session.user.code}}></ion-input>
     </ion-item>
     <ion-item lines="full">
       <ion-label position="floating">Carrera</ion-label>
-      <ion-input type="password" #degree required value={{session.user.degree}}></ion-input>
+      <ion-input type="text" #degree required value={{session.user.degree}}></ion-input>
     </ion-item>
     <ion-row>
       <ion-col>
