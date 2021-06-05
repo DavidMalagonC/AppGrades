@@ -25,8 +25,8 @@ export class JsonService {
     return this.http.get(url);
   }
 
-  login(latitud, longitud, email, password): Observable<User> {
-    var request = { latitud, longitud, email, password }
+  login(latitud, longitud, email, password, image): Observable<User> {
+    var request = { latitud, longitud, email, password, image}
     console.log(request);
     return this.http.post<User>(this.endpoint_back + "/perfil/usuario/signin", request);
   }

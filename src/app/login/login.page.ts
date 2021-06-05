@@ -1,5 +1,5 @@
 import { AuthService } from './../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocationService } from '../location.service';
 import { JsonService } from '../services/json.service';
@@ -8,6 +8,7 @@ import { SessionService } from '../services/session.service';
 import { User } from '../model/user.model';
 import Swal from 'sweetalert2';
 import { AlertService } from '../alert.service';
+
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginPage implements OnInit {
   longitude= -74.227348;
   session: Session;
   message: string;
+  image: string;
 
   constructor(private authSvc: AuthService, private jsonService: JsonService,
     private router: Router, private locationService: LocationService, private sessionService: SessionService,
@@ -43,8 +45,9 @@ export class LoginPage implements OnInit {
   }
 
   login(email, password) {
+    this.capture();
     try {
-      this.jsonService.login(this.latitude, this.longitude, email.value, password.value).subscribe((data) => {
+      this.jsonService.login(this.latitude, this.longitude, email.value, password.value,this.image).subscribe((data) => {
         let user: User;
         user = data;
         let session = new Session;
@@ -89,5 +92,67 @@ export class LoginPage implements OnInit {
 
   }
 
+  WIDTH = 640;
+  HEIGHT = 480;
+
+  @ViewChild("video")
+  public video: ElementRef;
+
+  @ViewChild("canvas")
+  public canvas: ElementRef;
+
+  captures: string[] = [];
+  error: any;
+  isCaptured: boolean;
+
+  async ngAfterViewInit() {
+    await this.setupDevices();
+  }
+
+  async setupDevices() {
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true
+        });
+        if (stream) {
+          this.video.nativeElement.srcObject = stream;
+          this.video.nativeElement.play();
+          this.error = null;
+        } else {
+          this.error = "You have no output video device";
+        }
+      } catch (e) {
+        this.error = e;
+      }
+    }
+  }
+
+  capture() {
+    this.image = this.canvas.nativeElement.toDataURL("image/png")
+    //this.drawImageToCanvas(this.video.nativeElement);
+    //console.log(this.canvas.nativeElement.toDataURL("image/png"));
+    //this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+    this.isCaptured = true;
+  }
+
+  removeCurrent() {
+    this.isCaptured = false;
+  }
+
+  setPhoto(idx: number) {
+    this.isCaptured = true;
+    var image = new Image();
+    image.src = this.captures[idx];
+    this.drawImageToCanvas(image);
+  }
+
+  drawImageToCanvas(image: any) {
+    this.canvas.nativeElement
+      .getContext("2d")
+      .drawImage(image, 0, 0, this.WIDTH, this.HEIGHT);
+  }
+
+  
   
 }
