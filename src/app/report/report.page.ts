@@ -4,6 +4,7 @@ import { Subject } from '../model/subject.model';
 import { JsonService } from '../services/json.service';
 import { SessionService } from '../services/session.service';
 import { Chart } from 'chart.js';
+import { Periods } from '../model/period.model';
 
 @Component({
   selector: 'app-report',
@@ -18,7 +19,7 @@ export class ReportPage implements OnInit {
     this.getAverageByStudent(this.session.user.code);
     this.getAverageSubjectsByStudent(this.session.user.code);
    }
-
+  periods: Periods[] = [{ period: '2021-1' }];
   session: Session;
   subjects: Subject[];
   average: any;

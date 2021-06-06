@@ -57,7 +57,7 @@ export class SubjectsPage implements OnInit {
 
 
   saveCourse(plan, course, teacher, period) {
-    this.alertService.opensweetalertcst("Se creara curso")
+    //this.alertService.opensweetalertcst("Se creara curso")
     if (plan == null || course == null || teacher == null || period == null)
       alert("Por favor ingresa todos tus datos")
     const date = new Date();

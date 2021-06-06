@@ -30,7 +30,7 @@
       <ion-input type="number" #code required value={{session.user.code}}></ion-input>
     </ion-item>
     <ion-item lines="full">
-      <ion-label position="floating">Carrera</ion-label>
+      <ion-label position="floating">{{session.user.id_rol == '3' ? 'Cargo': 'Facultad'}}</ion-label>
       <ion-input type="text" #degree required value={{session.user.degree}}></ion-input>
     </ion-item>
     <ion-row>

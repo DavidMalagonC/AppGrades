@@ -12,6 +12,12 @@
   <div class="center2">
     <!-- <h1>&nbsp;Promedio acumulado</h1>
     <canvas id="realtime" height="300px">{{ chart }}</canvas> -->
+    <ion-item>
+      <ion-label>Periodo</ion-label>
+      <ion-select  #period value="2021-1" placeholder="2021-1" >
+        <ion-select-option *ngFor="let period of periods" value="{{period.period}}">{{period.period}}</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-card>
       <ion-card-header>
         <ion-card-title color="primary">Promedio General</ion-card-title>
