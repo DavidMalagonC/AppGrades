@@ -86,12 +86,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "login",
-        value: function login(latitud, longitud, email, password) {
+        value: function login(latitud, longitud, email, password, image) {
           var request = {
             latitud: latitud,
             longitud: longitud,
             email: email,
-            password: password
+            password: password,
+            image: image
           };
           console.log(request);
           return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
@@ -119,6 +120,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
         }
       }, {
+        key: "getAverageByStudent",
+        value: function getAverageByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+        }
+      }, {
+        key: "getAverageSubjectsByStudent",
+        value: function getAverageSubjectsByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+        }
+      }, {
         key: "getSubjectsByTeacher",
         value: function getSubjectsByTeacher(code) {
           return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
@@ -131,7 +142,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             subject: subject,
             message: message
           };
-          return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+          return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
         }
       }, {
         key: "postJson",

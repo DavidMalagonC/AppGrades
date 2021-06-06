@@ -36058,7 +36058,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Reporte</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div style=\"height: 85%;\">\r\n    <h1>&nbsp;Promedio acumulado</h1>\r\n    <canvas id=\"realtime\" height=\"300px\">{{ chart }}</canvas>\r\n  </div>\r\n<ion-footer>\r\n  <app-nav-menu></app-nav-menu>\r\n</ion-footer>\r\n\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>\r\n      <p>Reporte academico\r\n        <app-nav-menu style=\"align-content: right; float: right;\"></app-nav-menu>\r\n      </p>\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"center2\">\r\n    <!-- <h1>&nbsp;Promedio acumulado</h1>\r\n    <canvas id=\"realtime\" height=\"300px\">{{ chart }}</canvas> -->\r\n    <ion-card>\r\n      <ion-card-header>\r\n        <ion-card-title color=\"primary\">Promedio General</ion-card-title>\r\n\r\n      </ion-card-header>\r\n      <ion-card-content>\r\n        <ion-item class=\"ion-activated\">\r\n          <ion-text color=\"secondary\">\r\n            <h1>{{average}}</h1>\r\n          </ion-text>\r\n        </ion-item>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card>\r\n      <ion-card-header>\r\n        <ion-card-title color=\"primary\">Promedio por curso</ion-card-title>\r\n\r\n      </ion-card-header>\r\n      <ion-card-content>\r\n        <ion-item class=\"ion-activated\" style=\"color: primary\" *ngFor=\"let subject of averages\">\r\n          <ion-text color=\"secondary\">\r\n            <h1>{{subject.Materia}}: &nbsp;</h1>\r\n          </ion-text>\r\n          <ion-text color=\"success\">\r\n            <h2>{{subject.Promedio}}</h2>\r\n          </ion-text>\r\n        </ion-item>\r\n      </ion-card-content>\r\n    </ion-card>\r\n</div>\r\n</ion-content>";
     /***/
   },
 
@@ -36325,13 +36325,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         */
 
         this.chart = null;
+        this.session = this.sessionService.getSessionLogged();
+        this.getSubjectsByTeacher(this.session.user.code);
+        this.getAverageByStudent(this.session.user.code);
+        this.getAverageSubjectsByStudent(this.session.user.code);
       }
 
       _createClass(ReportPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          this.session = this.sessionService.getSessionLogged();
-          this.getSubjectsByTeacher(this.session.user.code);
           this.chart = new chart_js__WEBPACK_IMPORTED_MODULE_4__["Chart"]('realtime', {
             type: 'bar',
             data: {
@@ -36397,6 +36399,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this.session.subject = _this.subjects;
 
               _this.sessionService.setSessionLoggedIn(_this.session);
+            });
+          } catch (error) {
+            console.log('Error->', error);
+          }
+        }
+      }, {
+        key: "getAverageByStudent",
+        value: function getAverageByStudent(code) {
+          var _this2 = this;
+
+          try {
+            this.jsonService.getAverageByStudent(code).subscribe(function (data) {
+              _this2.average = data.average;
+            });
+          } catch (error) {
+            console.log('Error->', error);
+          }
+        }
+      }, {
+        key: "getAverageSubjectsByStudent",
+        value: function getAverageSubjectsByStudent(code) {
+          var _this3 = this;
+
+          try {
+            this.jsonService.getAverageSubjectsByStudent(code).subscribe(function (data) {
+              _this3.averages = data;
             });
           } catch (error) {
             console.log('Error->', error);
@@ -36488,12 +36516,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "login",
-        value: function login(latitud, longitud, email, password) {
+        value: function login(latitud, longitud, email, password, image) {
           var request = {
             latitud: latitud,
             longitud: longitud,
             email: email,
-            password: password
+            password: password,
+            image: image
           };
           console.log(request);
           return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
@@ -36521,6 +36550,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
         }
       }, {
+        key: "getAverageByStudent",
+        value: function getAverageByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+        }
+      }, {
+        key: "getAverageSubjectsByStudent",
+        value: function getAverageSubjectsByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+        }
+      }, {
         key: "getSubjectsByTeacher",
         value: function getSubjectsByTeacher(code) {
           return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
@@ -36533,7 +36572,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             subject: subject,
             message: message
           };
-          return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+          return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
         }
       }, {
         key: "postJson",

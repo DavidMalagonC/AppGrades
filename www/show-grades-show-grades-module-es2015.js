@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>{{subject}}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div style=\"height: 85%;\">\n  <ion-card *ngFor=\"let grade of grades\" >\n  <ion-item  class=\"ion-activated\">\n    <ion-icon name=\"wifi\" slot=\"start\"></ion-icon>\n    <ion-label>{{grade.name}}: {{grade.grade_value}}</ion-label>\n  </ion-item>\n</ion-card>\n</div>\n<app-nav-menu></app-nav-menu>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>\r\n      <p>{{subject}}\r\n        <app-nav-menu style=\"align-content: right; float: right;\"></app-nav-menu>\r\n      </p>\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"center2\">\r\n    <ion-card *ngFor=\"let grade of grades\">\r\n      <ion-item class=\"ion-activated\">\r\n        <ion-icon name=\"wifi\" slot=\"start\"></ion-icon>\r\n        <ion-label>{{grade.name}}: {{grade.grade_value}}</ion-label>\r\n      </ion-item>\r\n    </ion-card>\r\n  </div>\r\n</ion-content>");
 
 /***/ }),
 
@@ -41,8 +41,8 @@ let JsonService = class JsonService {
     getJson(url) {
         return this.http.get(url);
     }
-    login(latitud, longitud, email, password) {
-        var request = { latitud, longitud, email, password };
+    login(latitud, longitud, email, password, image) {
+        var request = { latitud, longitud, email, password, image };
         console.log(request);
         return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
     }
@@ -57,12 +57,18 @@ let JsonService = class JsonService {
     getGradesBySubject(subject, code) {
         return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
     }
+    getAverageByStudent(code) {
+        return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+    }
+    getAverageSubjectsByStudent(code) {
+        return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+    }
     getSubjectsByTeacher(code) {
         return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
     }
     sendMail(email, subject, message) {
         var request = { email, subject, message };
-        return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+        return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
     }
     postJson(url, formData) {
         if (url == null) {

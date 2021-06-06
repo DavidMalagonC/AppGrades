@@ -16,7 +16,7 @@
   <div class="center2">
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle>Estudiante</ion-card-subtitle>
+        <ion-card-subtitle>{{session.user.id_rol == '2' ? 'Profesor': 'Estudiante'}}</ion-card-subtitle>
         <ion-card-title>{{session.user.name}} {{session.user.lastname}}</ion-card-title>
         <br />
         <img src="../../assets/img/perfil.webp" width="20%" class="center" />

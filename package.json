@@ -34,6 +34,7 @@
     "cordova-android": "9.0.0",
     "firebase": "^7.14.4",
     "ionic": "^5.4.16",
+    "jw-angular-pagination": "^1.2.0",
     "react": "^17.0.2",
     "rxjs": "~6.5.1",
     "serve": "^11.3.2",

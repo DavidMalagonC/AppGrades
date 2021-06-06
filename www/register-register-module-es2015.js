@@ -220,8 +220,8 @@ let JsonService = class JsonService {
     getJson(url) {
         return this.http.get(url);
     }
-    login(latitud, longitud, email, password) {
-        var request = { latitud, longitud, email, password };
+    login(latitud, longitud, email, password, image) {
+        var request = { latitud, longitud, email, password, image };
         console.log(request);
         return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
     }
@@ -236,12 +236,18 @@ let JsonService = class JsonService {
     getGradesBySubject(subject, code) {
         return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
     }
+    getAverageByStudent(code) {
+        return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+    }
+    getAverageSubjectsByStudent(code) {
+        return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+    }
     getSubjectsByTeacher(code) {
         return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
     }
     sendMail(email, subject, message) {
         var request = { email, subject, message };
-        return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+        return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
     }
     postJson(url, formData) {
         if (url == null) {

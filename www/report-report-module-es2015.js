@@ -37762,7 +37762,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Reporte</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div style=\"height: 85%;\">\r\n    <h1>&nbsp;Promedio acumulado</h1>\r\n    <canvas id=\"realtime\" height=\"300px\">{{ chart }}</canvas>\r\n  </div>\r\n<ion-footer>\r\n  <app-nav-menu></app-nav-menu>\r\n</ion-footer>\r\n\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>\r\n      <p>Reporte academico\r\n        <app-nav-menu style=\"align-content: right; float: right;\"></app-nav-menu>\r\n      </p>\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"center2\">\r\n    <!-- <h1>&nbsp;Promedio acumulado</h1>\r\n    <canvas id=\"realtime\" height=\"300px\">{{ chart }}</canvas> -->\r\n    <ion-card>\r\n      <ion-card-header>\r\n        <ion-card-title color=\"primary\">Promedio General</ion-card-title>\r\n\r\n      </ion-card-header>\r\n      <ion-card-content>\r\n        <ion-item class=\"ion-activated\">\r\n          <ion-text color=\"secondary\">\r\n            <h1>{{average}}</h1>\r\n          </ion-text>\r\n        </ion-item>\r\n      </ion-card-content>\r\n    </ion-card>\r\n    <ion-card>\r\n      <ion-card-header>\r\n        <ion-card-title color=\"primary\">Promedio por curso</ion-card-title>\r\n\r\n      </ion-card-header>\r\n      <ion-card-content>\r\n        <ion-item class=\"ion-activated\" style=\"color: primary\" *ngFor=\"let subject of averages\">\r\n          <ion-text color=\"secondary\">\r\n            <h1>{{subject.Materia}}: &nbsp;</h1>\r\n          </ion-text>\r\n          <ion-text color=\"success\">\r\n            <h2>{{subject.Promedio}}</h2>\r\n          </ion-text>\r\n        </ion-item>\r\n      </ion-card-content>\r\n    </ion-card>\r\n</div>\r\n</ion-content>");
 
 /***/ }),
 
@@ -37923,10 +37923,12 @@ let ReportPage = class ReportPage {
        * @var {any} chart
        */
         this.chart = null;
-    }
-    ngOnInit() {
         this.session = this.sessionService.getSessionLogged();
         this.getSubjectsByTeacher(this.session.user.code);
+        this.getAverageByStudent(this.session.user.code);
+        this.getAverageSubjectsByStudent(this.session.user.code);
+    }
+    ngOnInit() {
         this.chart = new chart_js__WEBPACK_IMPORTED_MODULE_4__["Chart"]('realtime', {
             type: 'bar',
             data: {
@@ -37997,6 +37999,26 @@ let ReportPage = class ReportPage {
             console.log('Error->', error);
         }
     }
+    getAverageByStudent(code) {
+        try {
+            this.jsonService.getAverageByStudent(code).subscribe(data => {
+                this.average = data.average;
+            });
+        }
+        catch (error) {
+            console.log('Error->', error);
+        }
+    }
+    getAverageSubjectsByStudent(code) {
+        try {
+            this.jsonService.getAverageSubjectsByStudent(code).subscribe(data => {
+                this.averages = data;
+            });
+        }
+        catch (error) {
+            console.log('Error->', error);
+        }
+    }
 };
 ReportPage.ctorParameters = () => [
     { type: _services_session_service__WEBPACK_IMPORTED_MODULE_3__["SessionService"] },
@@ -38042,8 +38064,8 @@ let JsonService = class JsonService {
     getJson(url) {
         return this.http.get(url);
     }
-    login(latitud, longitud, email, password) {
-        var request = { latitud, longitud, email, password };
+    login(latitud, longitud, email, password, image) {
+        var request = { latitud, longitud, email, password, image };
         console.log(request);
         return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
     }
@@ -38058,12 +38080,18 @@ let JsonService = class JsonService {
     getGradesBySubject(subject, code) {
         return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
     }
+    getAverageByStudent(code) {
+        return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+    }
+    getAverageSubjectsByStudent(code) {
+        return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+    }
     getSubjectsByTeacher(code) {
         return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
     }
     sendMail(email, subject, message) {
         var request = { email, subject, message };
-        return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+        return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
     }
     postJson(url, formData) {
         if (url == null) {

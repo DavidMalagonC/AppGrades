@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary" [translucent]="true">
+    <ion-title><p>Administrar cursos
+      <app-nav-menu style="align-content: right; float: right;"></app-nav-menu></p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="session.user.id_rol == 3">
+  <div style="width: 90%; float: center; padding-left: 20%; padding-top: 5%;">
+  <form>
+    <ion-item lines="full">
+      <ion-label>Plan de estudios</ion-label>
+      <ion-select  #plan >
+        <ion-select-option *ngFor="let plan of plans" value="{{plan}}" required>{{plan}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Curso</ion-label>
+      <ion-select  #course>
+        <ion-select-option *ngFor="let course of todos" value="{{course.name}}" required>{{course.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Docente</ion-label>
+      <ion-select  #teacher>
+        <ion-select-option *ngFor="let teacher of teachers" value="{{teacher.code}}" required>{{teacher.name}} {{teacher.lastname}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Periodo</ion-label>
+      <ion-select  #period >
+        <ion-select-option *ngFor="let period of periods" value="{{period}}" required>{{period}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" (click)="saveCourse(plan.value, course.value , teacher.value, period.value)" expand="block">Asignar curso</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  <div class="ion-margin">
+    <ion-text color="primary" class="ion-margin-left">
+      <h2>Cursos</h2>
+    </ion-text>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xs="4" style="font: Arial">Nombre</ion-col>
+        <ion-col size-xs="4" style="font: Arial">Codigo</ion-col>
+        <ion-col size-xs="4" style="font: Arial">Periodo</ion-col>
+      </ion-row>
+      <ion-row *ngFor="let todo of todos">
+        <ion-col size-xs="4">{{ todo.name }}</ion-col>
+        <ion-col size-xs="4">
+          {{ todo.code_subject }}
+        </ion-col>
+        <ion-col size-xs="4">{{ todo.period }}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!-- <jw-pagination [items]="todos" (changePage)="onChangePage($event)"  [pageSize]="10"></jw-pagination> -->
+</div>  
+</ion-content>
+

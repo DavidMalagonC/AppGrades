@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Notas</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"session.user.id_rol == 2\">\r\n  <h2>&nbsp;&nbsp; Selecciona un curso:</h2>\r\n  <ion-card *ngFor=\"let subject of subjects\">\r\n    <ion-item routerLink=\"/upload-grades\"  [queryParams]=\"{ subject: subject.code_subject }\" class=\"ion-activated\">\r\n      <ion-icon name=\"wifi\" slot=\"start\"></ion-icon>\r\n      <ion-label>{{subject.name}}</ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-content>\r\n<ion-content *ngIf=\"session.user.id_rol == 1\">\r\n  <h1>Selecciona un curso:</h1>\r\n  <ion-card *ngFor=\"let subject of subjects\">\r\n    <ion-item routerLink=\"/show-grades\"  [queryParams]=\"{ subjectCode: subject.code_subject, subject: subject.name }\" class=\"ion-activated\">\r\n      <ion-icon name=\"wifi\" slot=\"start\"></ion-icon>\r\n      <ion-label>{{subject.name}}</ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-content>\r\n<app-nav-menu></app-nav-menu>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>\r\n      <p>\r\n        Notas \r\n        <app-nav-menu style=\"align-content: right; float: right;\"></app-nav-menu>\r\n      </p>\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"session.user.id_rol == 2\" >\r\n  <div style=\"width: 80%; float: center; padding-left: 25%; padding-top: 5%;\">\r\n  <h2>&nbsp;&nbsp; Selecciona un curso:</h2>\r\n  <ion-card *ngFor=\"let subject of subjects\">\r\n    <ion-item routerLink=\"/upload-grades\" [queryParams]=\"{ subject: subject.code_subject }\" class=\"ion-activated\">\r\n      <ion-icon name=\"book\" slot=\"start\"></ion-icon>\r\n      <ion-label>{{subject.name}}</ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</div>\r\n</ion-content>\r\n<ion-content *ngIf=\"session.user.id_rol == 1\">\r\n  <div style=\"width: 80%; float: center; padding-left: 25%; padding-top: 5%;\">\r\n  <h1>Selecciona un curso:</h1>\r\n  <ion-card *ngFor=\"let subject of subjects\">\r\n    <ion-item routerLink=\"/show-grades\" [queryParams]=\"{ subjectCode: subject.code_subject, subject: subject.name }\"\r\n      class=\"ion-activated\">\r\n      <ion-icon name=\"book\" slot=\"start\"></ion-icon>\r\n      <ion-label>{{subject.name}}</ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</div>\r\n</ion-content>";
     /***/
   },
 
@@ -344,12 +344,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "login",
-        value: function login(latitud, longitud, email, password) {
+        value: function login(latitud, longitud, email, password, image) {
           var request = {
             latitud: latitud,
             longitud: longitud,
             email: email,
-            password: password
+            password: password,
+            image: image
           };
           console.log(request);
           return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
@@ -377,6 +378,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
         }
       }, {
+        key: "getAverageByStudent",
+        value: function getAverageByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+        }
+      }, {
+        key: "getAverageSubjectsByStudent",
+        value: function getAverageSubjectsByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+        }
+      }, {
         key: "getSubjectsByTeacher",
         value: function getSubjectsByTeacher(code) {
           return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
@@ -389,7 +400,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             subject: subject,
             message: message
           };
-          return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+          return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
         }
       }, {
         key: "postJson",

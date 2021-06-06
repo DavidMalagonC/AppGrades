@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Perfil</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div style=\"height: 85%;\">\r\n    <ion-card>\r\n      <ion-card-header>\r\n        <ion-card-subtitle>Estudiante</ion-card-subtitle>\r\n        <ion-card-title>{{session.user.name}} {{session.user.lastname}}</ion-card-title>\r\n        <br />\r\n        <img src=\"../../assets/img/perfil.webp\" width=\"70%\" class=\"center\" />\r\n      </ion-card-header>\r\n    </ion-card>\r\n\r\n    <ion-button (click)=\"presentModal()\" class=\"center\">Datos Personales</ion-button>\r\n    <ion-card>\r\n      <ion-item href=\"#\" class=\"ion-activated\">\r\n        <ion-icon name=\"wifi\" slot=\"start\"></ion-icon>\r\n        <ion-label>{{session.user.degree}}</ion-label>\r\n      </ion-item>\r\n\r\n      <ion-item href=\"#\">\r\n        <ion-icon name=\"wine\" slot=\"start\"></ion-icon>\r\n        <ion-label>{{session.user.code}}</ion-label>\r\n      </ion-item>\r\n\r\n      <ion-item class=\"ion-activated\">\r\n        <ion-icon name=\"warning\" slot=\"start\"></ion-icon>\r\n        <ion-label>{{session.user.email}}</ion-label>\r\n      </ion-item>\r\n    </ion-card>\r\n    <ion-card>\r\n    </ion-card>\r\n  </div>\r\n  <app-nav-menu></app-nav-menu>\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header routerLink=\"this.session ? '/profile' : '/login' \" > \r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>\r\n      <p>Perfil\r\n        <app-nav-menu style=\"align-content: right; float: right;\"></app-nav-menu>\r\n        <ion-button (click)=\"logOut()\" style=\"justify-content: end;\">\r\n          <ion-icon name=\"exit\" slot=\"start\"></ion-icon>Cerrar sesión\r\n        </ion-button>\r\n      </p>\r\n     \r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"center2\">\r\n    <ion-card>\r\n      <ion-card-header>\r\n        <ion-card-subtitle>Estudiante</ion-card-subtitle>\r\n        <ion-card-title>{{session.user.name}} {{session.user.lastname}}</ion-card-title>\r\n        <br />\r\n        <img src=\"../../assets/img/perfil.webp\" width=\"20%\" class=\"center\" />\r\n      </ion-card-header>\r\n    </ion-card>\r\n\r\n    <ion-button (click)=\"presentModal()\" class=\"center\">\r\n      <ion-icon name=\"person-circle\" slot=\"start\"></ion-icon>Datos Personales\r\n    </ion-button>\r\n    <ion-card>\r\n      <ion-item href=\"#\" class=\"ion-activated\">\r\n        <ion-icon name=\"wifi\" slot=\"start\"></ion-icon>\r\n        <ion-label>{{session.user.degree}}</ion-label>\r\n      </ion-item>\r\n\r\n      <ion-item href=\"#\">\r\n        <ion-icon name=\"wine\" slot=\"start\"></ion-icon>\r\n        <ion-label>{{session.user.code}}</ion-label>\r\n      </ion-item>\r\n\r\n      <ion-item class=\"ion-activated\">\r\n        <ion-icon name=\"warning\" slot=\"start\"></ion-icon>\r\n        <ion-label>{{session.user.email}}</ion-label>\r\n      </ion-item>\r\n    </ion-card>\r\n    <ion-card>\r\n    </ion-card>\r\n  </div>\r\n</ion-content>";
     /***/
   },
 
@@ -41,7 +41,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header translucent>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Datos personales</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <ion-button onclick=\"dismissModal()\">Close</ion-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <form>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\" >Nombre</ion-label>\r\n      <ion-input type=\"text\" #name required value={{session.user.name}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Apellido</ion-label>\r\n      <ion-input type=\"text\" #lastname required value={{session.user.lastname}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Email</ion-label>\r\n      <ion-input type=\"text\" #email required value={{session.user.email}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Password</ion-label>\r\n      <ion-input type=\"password\" #password required value={{session.user.password}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Codigo</ion-label>\r\n      <ion-input type=\"password\" #code required value={{session.user.code}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Carrera</ion-label>\r\n      <ion-input type=\"password\" #degree required value={{session.user.degree}}></ion-input>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button type=\"submit\" (click)=\"update(email, password, name, lastname, code, degree)\" expand=\"block\">Update Data</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </form>\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header translucent>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Datos personales</ion-title>\r\n    <ion-buttons slot=\"end\">\r\n      <!-- <ion-button onclick=\"dismissModal()\">Close</ion-button> -->\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <form>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\" >Nombre</ion-label>\r\n      <ion-input type=\"text\" #name required value={{session.user.name}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Apellido</ion-label>\r\n      <ion-input type=\"text\" #lastname required value={{session.user.lastname}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Email</ion-label>\r\n      <ion-input type=\"text\" #email required value={{session.user.email}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Password</ion-label>\r\n      <ion-input type=\"password\" #password required value={{session.user.password}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Codigo</ion-label>\r\n      <ion-input type=\"number\" #code required value={{session.user.code}}></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Carrera</ion-label>\r\n      <ion-input type=\"text\" #degree required value={{session.user.degree}}></ion-input>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button type=\"submit\" (click)=\"update(email, password, name, lastname, code, degree)\" expand=\"block\">Update Data</ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </form>\r\n</ion-content>";
     /***/
   },
 
@@ -201,7 +201,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "/* Works - pass \"my-custom-class\" in cssClass to increase specificity */\n.my-custom-class .modal-wrapper {\n  background: #222;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZmlsZS9DOlxcVXNlcnNcXGRhdmlkLm1hbGFnb25cXG5vdGFzL3NyY1xcYXBwXFxwcm9maWxlXFxwcm9maWxlLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcHJvZmlsZS9wcm9maWxlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSx1RUFBQTtBQUNBO0VBQ0ksZ0JBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3Byb2ZpbGUvcHJvZmlsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvKiBXb3JrcyAtIHBhc3MgXCJteS1jdXN0b20tY2xhc3NcIiBpbiBjc3NDbGFzcyB0byBpbmNyZWFzZSBzcGVjaWZpY2l0eSAqL1xyXG4ubXktY3VzdG9tLWNsYXNzIC5tb2RhbC13cmFwcGVyIHtcclxuICAgIGJhY2tncm91bmQ6ICMyMjI7XHJcbiAgfSIsIi8qIFdvcmtzIC0gcGFzcyBcIm15LWN1c3RvbS1jbGFzc1wiIGluIGNzc0NsYXNzIHRvIGluY3JlYXNlIHNwZWNpZmljaXR5ICovXG4ubXktY3VzdG9tLWNsYXNzIC5tb2RhbC13cmFwcGVyIHtcbiAgYmFja2dyb3VuZDogIzIyMjtcbn0iXX0= */";
+    __webpack_exports__["default"] = "/* Works - pass \"my-custom-class\" in cssClass to increase specificity */\n.my-custom-class .modal-wrapper {\n  background: #222;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcHJvZmlsZS9DOlxcVXNlcnNcXFNBTlRJXFxBcHBHcmFkZXMvc3JjXFxhcHBcXHByb2ZpbGVcXHByb2ZpbGUucGFnZS5zY3NzIiwic3JjL2FwcC9wcm9maWxlL3Byb2ZpbGUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLHVFQUFBO0FBQ0E7RUFDSSxnQkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcHJvZmlsZS9wcm9maWxlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi8qIFdvcmtzIC0gcGFzcyBcIm15LWN1c3RvbS1jbGFzc1wiIGluIGNzc0NsYXNzIHRvIGluY3JlYXNlIHNwZWNpZmljaXR5ICovXHJcbi5teS1jdXN0b20tY2xhc3MgLm1vZGFsLXdyYXBwZXIge1xyXG4gICAgYmFja2dyb3VuZDogIzIyMjtcclxuICB9IiwiLyogV29ya3MgLSBwYXNzIFwibXktY3VzdG9tLWNsYXNzXCIgaW4gY3NzQ2xhc3MgdG8gaW5jcmVhc2Ugc3BlY2lmaWNpdHkgKi9cbi5teS1jdXN0b20tY2xhc3MgLm1vZGFsLXdyYXBwZXIge1xuICBiYWNrZ3JvdW5kOiAjMjIyO1xufSJdfQ== */";
     /***/
   },
 
@@ -254,20 +254,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _update_profile_update_profile_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../update-profile/update-profile.component */
     "./src/app/update-profile/update-profile.component.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
     var ProfilePage = /*#__PURE__*/function () {
-      function ProfilePage(modalController, routerOutlet, sessionService) {
+      function ProfilePage(modalController, routerOutlet, sessionService, router) {
         _classCallCheck(this, ProfilePage);
 
         this.modalController = modalController;
         this.routerOutlet = routerOutlet;
         this.sessionService = sessionService;
+        this.router = router;
       }
 
       _createClass(ProfilePage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
           this.session = this.sessionService.getSessionLogged();
+
+          if (null == this.session) {
+            this.logOut;
+          }
         }
       }, {
         key: "presentModal",
@@ -311,6 +322,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             'dismissed': true
           });
         }
+      }, {
+        key: "logOut",
+        value: function logOut() {
+          this.sessionService.setSessionLoggedOut();
+          this.router.navigate(['login']);
+        }
       }]);
 
       return ProfilePage;
@@ -323,6 +340,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["IonRouterOutlet"]
       }, {
         type: _services_session_service__WEBPACK_IMPORTED_MODULE_3__["SessionService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
       }];
     };
 
@@ -399,12 +418,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "login",
-        value: function login(latitud, longitud, email, password) {
+        value: function login(latitud, longitud, email, password, image) {
           var request = {
             latitud: latitud,
             longitud: longitud,
             email: email,
-            password: password
+            password: password,
+            image: image
           };
           console.log(request);
           return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
@@ -432,6 +452,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
         }
       }, {
+        key: "getAverageByStudent",
+        value: function getAverageByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+        }
+      }, {
+        key: "getAverageSubjectsByStudent",
+        value: function getAverageSubjectsByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+        }
+      }, {
         key: "getSubjectsByTeacher",
         value: function getSubjectsByTeacher(code) {
           return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
@@ -444,7 +474,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             subject: subject,
             message: message
           };
-          return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+          return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
         }
       }, {
         key: "postJson",

@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"primary\">\n    <ion-title>Soporte</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <form style=\"height: 90%;\">\n    <ion-item lines=\"full\">\n      <ion-label position=\"floating\">Asunto</ion-label>\n      <ion-input type=\"text\" #subject required></ion-input>\n    </ion-item>\n    <ion-item lines=\"full\">\n      <ion-label position=\"floating\">Mensaje</ion-label>\n      <ion-textarea type=\"text\" #message required rows=5></ion-textarea>\n    </ion-item>\n    <br />\n    <ion-button type=\"submit\" expand=\"block\" color=\"primary\" (click)=\"sendMail(subject.value, message.value)\">Enviar\n      mensaje</ion-button>\n  </form>\n\n<app-nav-menu></app-nav-menu>\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title> <p>Asistenacia academica\r\n      <app-nav-menu style=\"align-content: right; float: right;\"></app-nav-menu>\r\n    </p></ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=\"center2\">\r\n  <form style=\"height: 90%;\">\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Asunto</ion-label>\r\n      <ion-input type=\"text\" #subject required></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Mensaje</ion-label>\r\n      <ion-textarea type=\"text\" #message required rows=5></ion-textarea>\r\n    </ion-item>\r\n    <br />\r\n    <ion-button type=\"submit\" expand=\"block\" color=\"primary\" (click)=\"sendMail(subject.value, message.value)\">Enviar\r\n      mensaje</ion-button>\r\n  </form>\r\n</div>\r\n</ion-content>";
     /***/
   },
 
@@ -247,6 +247,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           try {
             this.jsonService.sendMail("cristian-ramirez1@upc.edu.co", subject, message).subscribe(function (data) {
               _this.response = data;
+
+              _this.alertService.successfulAlert(_this.response.msg);
             }, function (error) {
               _this.alertService.FailedAlert("No se pudo enviar el correo");
             });

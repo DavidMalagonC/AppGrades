@@ -3791,7 +3791,6 @@ function _createClass2(Constructor, protoProps, staticProps) { if (protoProps) _
       _createClass2(AlertService, [{
         key: "successfulAlert",
         value: function successfulAlert(message) {
-          debugger;
           sweetalert2__WEBPACK_IMPORTED_MODULE_2___default.a.fire({
             text: message,
             icon: 'success'
@@ -3892,12 +3891,13 @@ function _createClass2(Constructor, protoProps, staticProps) { if (protoProps) _
         }
       }, {
         key: "login",
-        value: function login(latitud, longitud, email, password) {
+        value: function login(latitud, longitud, email, password, image) {
           var request = {
             latitud: latitud,
             longitud: longitud,
             email: email,
-            password: password
+            password: password,
+            image: image
           };
           console.log(request);
           return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
@@ -3925,6 +3925,16 @@ function _createClass2(Constructor, protoProps, staticProps) { if (protoProps) _
           return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
         }
       }, {
+        key: "getAverageByStudent",
+        value: function getAverageByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+        }
+      }, {
+        key: "getAverageSubjectsByStudent",
+        value: function getAverageSubjectsByStudent(code) {
+          return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+        }
+      }, {
         key: "getSubjectsByTeacher",
         value: function getSubjectsByTeacher(code) {
           return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
@@ -3937,7 +3947,7 @@ function _createClass2(Constructor, protoProps, staticProps) { if (protoProps) _
             subject: subject,
             message: message
           };
-          return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+          return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
         }
       }, {
         key: "postJson",

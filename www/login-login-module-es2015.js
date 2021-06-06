@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Login</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <form>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Email</ion-label>\r\n      <ion-input type=\"text\" #email required></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Password</ion-label>\r\n      <ion-input type=\"password\" #password required></ion-input>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button type=\"submit\" (click)=\"login  (email, password)\" expand=\"block\">Login</ion-button>\r\n      </ion-col>\r\n     \r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col>\r\n        <p class=\"ion-text-end\">\r\n          <a routerLink=\"/forgot-password\">Forgot password? </a>\r\n        </p>\r\n      </ion-col>\r\n    </ion-row>\r\n  </form>\r\n  <ion-row>\r\n    <ion-col>\r\n      <p class=\"ion-text-end\">\r\n        <a routerLink=\"/register\">Create an account </a>\r\n      </p>\r\n    </ion-col>\r\n  </ion-row>\r\n\r\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Login</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content style=\"justify-content: center;\">\r\n  <form style=\"max-width: 80%;  padding-left: 25%; padding-top: 10%;\">\r\n    <ion-item >\r\n      <ion-label position=\"floating\">Correo electronico</ion-label>\r\n      <ion-input type=\"text\" #email required></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Contraseña</ion-label>\r\n      <ion-input type=\"password\" #password required></ion-input>\r\n    </ion-item>\r\n    <!-- <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Tu carita</ion-label>\r\n      <ion-input type=\"file\" capture=\"camera\" required></ion-input>\r\n    </ion-item> -->\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button type=\"submit\" (click)=\"login(email, password)\" expand=\"block\">Login</ion-button>\r\n      </ion-col>\r\n     \r\n    </ion-row>\r\n   <!--  <ion-row>\r\n      <ion-col>\r\n        <p class=\"ion-text-end\">\r\n          <a routerLink=\"/forgot-password\">Forgot password? </a>\r\n        </p>\r\n      </ion-col>\r\n    </ion-row> -->\r\n  </form>\r\n  <!-- <ion-row>\r\n    <ion-col>\r\n      <p class=\"ion-text-end\">\r\n        <a routerLink=\"/register\">Create an account </a>\r\n      </p>\r\n    </ion-col>\r\n  </ion-row> -->\r\n<div hidden>\r\n<div class=\"video-container\" *ngIf=\"!error\">\r\n\t<video [class.show]=\"!isCaptured\" [class.hide]=\"isCaptured\" #video id=\"video\" [width]=\"WIDTH\" [height]=\"HEIGHT\"\r\n\t\tautoplay></video>\r\n\t<canvas [class.show]=\"isCaptured\" [class.hide]=\"!isCaptured\" #canvas id=\"canvas\" [width]=\"WIDTH\"\r\n\t\t[height]=\"HEIGHT\"></canvas>\r\n</div>\r\n\r\n<div class=\"snap-container\">\r\n\t<button class=\"btn btn-primary\" *ngIf=\"!isCaptured\" (click)=\"capture()\">Snap Photo</button>\r\n\t<button class=\"btn btn-danger\" *ngIf=\"isCaptured\" (click)=\"removeCurrent()\">Take Another</button>\r\n\r\n\t<div *ngIf=\"error\" class=\"text-danger mt-4\">\r\n\t\t{{ error }}. Please click refresh on stackblitz\r\n\t\t<div class=\"mt-5\">\r\n\t\t\t<img src=\"https://trungk18.com/7e0976255739e721501803ee074f1f94/camera.gif\" />\r\n\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<ul class=\"list-unstyled\">\r\n\t\t<li *ngFor=\"let src of captures; let idx = index\" (click)=\"setPhoto(idx)\">\r\n\t\t\t<img [src]=\"src\" height=\"50\" />\r\n  </li>\r\n\t</ul>\r\n</div>\r\n</ion-content>");
 
 /***/ }),
 
@@ -140,7 +140,7 @@ LoginPageModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".center-span {\n  display: block;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vQzpcXFVzZXJzXFxkYXZpZC5tYWxhZ29uXFxub3Rhcy9zcmNcXGFwcFxcbG9naW5cXGxvZ2luLnBhZ2Uuc2NzcyIsInNyYy9hcHAvbG9naW4vbG9naW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtFQUNBLGtCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyLXNwYW4ge1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG4iLCIuY2VudGVyLXNwYW4ge1xuICBkaXNwbGF5OiBibG9jaztcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".center-span {\n  display: block;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vQzpcXFVzZXJzXFxTQU5USVxcQXBwR3JhZGVzL3NyY1xcYXBwXFxsb2dpblxcbG9naW4ucGFnZS5zY3NzIiwic3JjL2FwcC9sb2dpbi9sb2dpbi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFBO0VBQ0Esa0JBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXItc3BhbiB7XHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbiIsIi5jZW50ZXItc3BhbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59Il19 */");
 
 /***/ }),
 
@@ -184,6 +184,9 @@ let LoginPage = class LoginPage {
         this.alertService = alertService;
         this.latitude = 4.586303;
         this.longitude = -74.227348;
+        this.WIDTH = 640;
+        this.HEIGHT = 480;
+        this.captures = [];
     }
     ngOnInit() {
         this.getLocation();
@@ -203,8 +206,9 @@ let LoginPage = class LoginPage {
         });
     }
     login(email, password) {
+        this.capture();
         try {
-            this.jsonService.login(this.latitude, this.longitude, email.value, password.value).subscribe((data) => {
+            this.jsonService.login(this.latitude, this.longitude, email.value, password.value, this.image).subscribe((data) => {
                 let user;
                 user = data;
                 let session = new _model_session_model__WEBPACK_IMPORTED_MODULE_6__["Session"];
@@ -249,6 +253,54 @@ let LoginPage = class LoginPage {
             this.longitude = pos.lng;
         });
     }
+    ngAfterViewInit() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.setupDevices();
+        });
+    }
+    setupDevices() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                try {
+                    const stream = yield navigator.mediaDevices.getUserMedia({
+                        video: true
+                    });
+                    if (stream) {
+                        this.video.nativeElement.srcObject = stream;
+                        this.video.nativeElement.play();
+                        this.error = null;
+                    }
+                    else {
+                        this.error = "You have no output video device";
+                    }
+                }
+                catch (e) {
+                    this.error = e;
+                }
+            }
+        });
+    }
+    capture() {
+        this.image = this.canvas.nativeElement.toDataURL("image/png");
+        //this.drawImageToCanvas(this.video.nativeElement);
+        //console.log(this.canvas.nativeElement.toDataURL("image/png"));
+        //this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+        this.isCaptured = true;
+    }
+    removeCurrent() {
+        this.isCaptured = false;
+    }
+    setPhoto(idx) {
+        this.isCaptured = true;
+        var image = new Image();
+        image.src = this.captures[idx];
+        this.drawImageToCanvas(image);
+    }
+    drawImageToCanvas(image) {
+        this.canvas.nativeElement
+            .getContext("2d")
+            .drawImage(image, 0, 0, this.WIDTH, this.HEIGHT);
+    }
 };
 LoginPage.ctorParameters = () => [
     { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"] },
@@ -258,6 +310,12 @@ LoginPage.ctorParameters = () => [
     { type: _services_session_service__WEBPACK_IMPORTED_MODULE_7__["SessionService"] },
     { type: _alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"] }
 ];
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"])("video")
+], LoginPage.prototype, "video", void 0);
+Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"])("canvas")
+], LoginPage.prototype, "canvas", void 0);
 LoginPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
         selector: 'app-login',

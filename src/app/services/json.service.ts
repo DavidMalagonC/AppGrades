@@ -8,6 +8,7 @@ import { Student } from '../model/student.model';
 import { Subject } from '../model/subject.model';
 import { User } from '../model/user.model';
 import { Grade } from '../model/grade.model';
+import { Teacher } from '../model/teacher.model ';
 
 
 @Injectable({
@@ -37,8 +38,23 @@ export class JsonService {
     return this.http.post<any>(this.endpoint_back + "/student/grade/" + code + "/" + code_subject, request);
   }
 
+  saveCourse(plan, name , teacher, period, code_subject, active): Observable<any> {
+    var grades: any[] = [];
+    var request = { code_subject, name, period, active, grades }
+    console.log(request);
+    return this.http.post<any>(this.endpoint_back + "/student/subject/" + teacher, request);
+  }
+
   getStudentsBySubject(subject): Observable<Student[]> {
     return this.http.get<Student[]>(this.endpoint_back + "/course/students/" + subject);
+  }
+
+  getSubjectByCode(code): Observable<Subject[]> {
+    return this.http.get<Subject[]>(this.endpoint_back + "/course/student/subjects/" + code);
+  }
+
+  getTeachers(): Observable<Teacher[]> {
+    return this.http.get<Teacher[]>(this.endpoint_back + "/course/teacher/");
   }
 
   getGradesBySubject(subject, code): Observable<Grade[]> {
@@ -49,12 +65,16 @@ export class JsonService {
     return this.http.get<any>(this.endpoint_back + "/student/grade/average/" + code);
   }
 
+  getGradeByStudent(subject, cort, code): Observable<any> {
+    return this.http.get<Grade[]>(this.endpoint_back + "/student/grade/" + code + "/" + subject + "/" + cort);
+  }
+
   getAverageSubjectsByStudent(code): Observable<any> {
     return this.http.get<any>(this.endpoint_back + "/student/list/average/grade/" + code);
   }
 
-  getSubjectsByTeacher(code): Observable<Subject[]> {
-    return this.http.get<Subject[]>(this.endpoint_back + "/perfil/subjects/" + code);
+  getSubjectsByTeacher(code, period): Observable<Subject[]> {
+    return this.http.get<Subject[]>(this.endpoint_back + "/student/subject/" + code +"/" + period);
   }
 
   sendMail(email, subject, message): Observable<string> {

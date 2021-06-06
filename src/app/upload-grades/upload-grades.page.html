@@ -1,33 +1,38 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Subir nota</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title><p>Subir nota
+      <app-nav-menu style="align-content: right; float: right;"></app-nav-menu></p>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content *ngIf="session.user.id_rol == 2">
+  <div style="width: 80%; float: center; padding-left: 25%; padding-top: 5%;">
   <form>
     <ion-item lines="full">
-      <ion-label position="floating">Concepto</ion-label>
-      <ion-input type="text" #course required></ion-input>
+      <ion-label>Corte</ion-label>
+      <ion-select  #cort value="1 corte" placeholder="1 corte"  (ionChange)="getGradeByStudent(cort.value, code.value)">
+        <ion-select-option *ngFor="let cort of corts" value="{{cort}}">{{cort}}</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item lines="full">
-      <ion-label position="floating">Nota</ion-label>
-      <ion-input type="number " #grade required></ion-input>
+      <ion-label position="floating" id="gradeLabel" color="{{color}}" >Nota</ion-label>
+      <ion-input  #grade required id="grade" type="number" min="0" max="50" (ionChange)="validateGrade(grade.value)"></ion-input>
     </ion-item>
     <ion-item lines="full">
       <ion-label >Estudiante:</ion-label>
-      <select #code>
-        <option *ngFor="let student of students" [value]="student.code">
+      <ion-select  #code  (ionChange)="getGradeByStudent(cort.value, code.value)">
+        <ion-select-option *ngFor="let student of students" [value]="student.code">
           {{ student.name }}
-        </option>
-      </select>
+        </ion-select-option>
+      </ion-select >
     </ion-item>
     <ion-row>
       <ion-col>
-        <ion-button type="submit" (click)="uploadGrade(grade.value, course.value, code.value)" expand="block">Guardar Nota</ion-button>
+        <ion-button type="submit" (click)="uploadGrade(grade.value, code.value, cort.value)" expand="block">Guardar Nota</ion-button>
       </ion-col>
     </ion-row>
-  </form>  
-  <app-nav-menu></app-nav-menu>
+  </form>
+  </div>
 </ion-content>

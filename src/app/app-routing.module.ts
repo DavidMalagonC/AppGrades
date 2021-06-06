@@ -62,13 +62,18 @@ const routes: Routes = [
   {
     path: 'upload-grades',
     loadChildren: () => import('./upload-grades/upload-grades.module').then( m => m.UploadGradesPageModule)
-  },  {
+  },
+  {
     path: 'show-grades',
     loadChildren: () => import('./show-grades/show-grades.module').then( m => m.ShowGradesPageModule)
   },
   {
     path: 'email',
     loadChildren: () => import('./email/email.module').then( m => m.EmailPageModule)
+  },
+  {
+    path: 'subjects',
+    loadChildren: () => import('./subjects/subjects.module').then( m => m.SubjectsPageModule)
   }
 
 

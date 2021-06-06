@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Login</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <form>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Email</ion-label>\r\n      <ion-input type=\"text\" #email required></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Password</ion-label>\r\n      <ion-input type=\"password\" #password required></ion-input>\r\n    </ion-item>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button type=\"submit\" (click)=\"login  (email, password)\" expand=\"block\">Login</ion-button>\r\n      </ion-col>\r\n     \r\n    </ion-row>\r\n    <ion-row>\r\n      <ion-col>\r\n        <p class=\"ion-text-end\">\r\n          <a routerLink=\"/forgot-password\">Forgot password? </a>\r\n        </p>\r\n      </ion-col>\r\n    </ion-row>\r\n  </form>\r\n  <ion-row>\r\n    <ion-col>\r\n      <p class=\"ion-text-end\">\r\n        <a routerLink=\"/register\">Create an account </a>\r\n      </p>\r\n    </ion-col>\r\n  </ion-row>\r\n\r\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Login</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content style=\"justify-content: center;\">\r\n  <form style=\"max-width: 80%;  padding-left: 25%; padding-top: 10%;\">\r\n    <ion-item >\r\n      <ion-label position=\"floating\">Correo electronico</ion-label>\r\n      <ion-input type=\"text\" #email required></ion-input>\r\n    </ion-item>\r\n    <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Contraseña</ion-label>\r\n      <ion-input type=\"password\" #password required></ion-input>\r\n    </ion-item>\r\n    <!-- <ion-item lines=\"full\">\r\n      <ion-label position=\"floating\">Tu carita</ion-label>\r\n      <ion-input type=\"file\" capture=\"camera\" required></ion-input>\r\n    </ion-item> -->\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-button type=\"submit\" (click)=\"login(email, password)\" expand=\"block\">Login</ion-button>\r\n      </ion-col>\r\n     \r\n    </ion-row>\r\n   <!--  <ion-row>\r\n      <ion-col>\r\n        <p class=\"ion-text-end\">\r\n          <a routerLink=\"/forgot-password\">Forgot password? </a>\r\n        </p>\r\n      </ion-col>\r\n    </ion-row> -->\r\n  </form>\r\n  <!-- <ion-row>\r\n    <ion-col>\r\n      <p class=\"ion-text-end\">\r\n        <a routerLink=\"/register\">Create an account </a>\r\n      </p>\r\n    </ion-col>\r\n  </ion-row> -->\r\n<div hidden>\r\n<div class=\"video-container\" *ngIf=\"!error\">\r\n\t<video [class.show]=\"!isCaptured\" [class.hide]=\"isCaptured\" #video id=\"video\" [width]=\"WIDTH\" [height]=\"HEIGHT\"\r\n\t\tautoplay></video>\r\n\t<canvas [class.show]=\"isCaptured\" [class.hide]=\"!isCaptured\" #canvas id=\"canvas\" [width]=\"WIDTH\"\r\n\t\t[height]=\"HEIGHT\"></canvas>\r\n</div>\r\n\r\n<div class=\"snap-container\">\r\n\t<button class=\"btn btn-primary\" *ngIf=\"!isCaptured\" (click)=\"capture()\">Snap Photo</button>\r\n\t<button class=\"btn btn-danger\" *ngIf=\"isCaptured\" (click)=\"removeCurrent()\">Take Another</button>\r\n\r\n\t<div *ngIf=\"error\" class=\"text-danger mt-4\">\r\n\t\t{{ error }}. Please click refresh on stackblitz\r\n\t\t<div class=\"mt-5\">\r\n\t\t\t<img src=\"https://trungk18.com/7e0976255739e721501803ee074f1f94/camera.gif\" />\r\n\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<ul class=\"list-unstyled\">\r\n\t\t<li *ngFor=\"let src of captures; let idx = index\" (click)=\"setPhoto(idx)\">\r\n\t\t\t<img [src]=\"src\" height=\"50\" />\r\n  </li>\r\n\t</ul>\r\n</div>\r\n</ion-content>";
     /***/
   },
 
@@ -243,7 +243,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".center-span {\n  display: block;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vQzpcXFVzZXJzXFxkYXZpZC5tYWxhZ29uXFxub3Rhcy9zcmNcXGFwcFxcbG9naW5cXGxvZ2luLnBhZ2Uuc2NzcyIsInNyYy9hcHAvbG9naW4vbG9naW4ucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsY0FBQTtFQUNBLGtCQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2VudGVyLXNwYW4ge1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG4iLCIuY2VudGVyLXNwYW4ge1xuICBkaXNwbGF5OiBibG9jaztcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufSJdfQ== */";
+    __webpack_exports__["default"] = ".center-span {\n  display: block;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vQzpcXFVzZXJzXFxTQU5USVxcQXBwR3JhZGVzL3NyY1xcYXBwXFxsb2dpblxcbG9naW4ucGFnZS5zY3NzIiwic3JjL2FwcC9sb2dpbi9sb2dpbi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxjQUFBO0VBQ0Esa0JBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2xvZ2luL2xvZ2luLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXItc3BhbiB7XHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbiIsIi5jZW50ZXItc3BhbiB7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59Il19 */";
     /***/
   },
 
@@ -339,6 +339,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.alertService = alertService;
         this.latitude = 4.586303;
         this.longitude = -74.227348;
+        this.WIDTH = 640;
+        this.HEIGHT = 480;
+        this.captures = [];
       }
 
       _createClass(LoginPage, [{
@@ -388,8 +391,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function login(email, password) {
           var _this = this;
 
+          this.capture();
+
           try {
-            this.jsonService.login(this.latitude, this.longitude, email.value, password.value).subscribe(function (data) {
+            this.jsonService.login(this.latitude, this.longitude, email.value, password.value, this.image).subscribe(function (data) {
               var user;
               user = data;
               var session = new _model_session_model__WEBPACK_IMPORTED_MODULE_6__["Session"]();
@@ -463,6 +468,99 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             _this2.longitude = pos.lng;
           });
         }
+      }, {
+        key: "ngAfterViewInit",
+        value: function ngAfterViewInit() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return this.setupDevices();
+
+                  case 2:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this);
+          }));
+        }
+      }, {
+        key: "setupDevices",
+        value: function setupDevices() {
+          return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var stream;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) {
+                      _context4.next = 11;
+                      break;
+                    }
+
+                    _context4.prev = 1;
+                    _context4.next = 4;
+                    return navigator.mediaDevices.getUserMedia({
+                      video: true
+                    });
+
+                  case 4:
+                    stream = _context4.sent;
+
+                    if (stream) {
+                      this.video.nativeElement.srcObject = stream;
+                      this.video.nativeElement.play();
+                      this.error = null;
+                    } else {
+                      this.error = "You have no output video device";
+                    }
+
+                    _context4.next = 11;
+                    break;
+
+                  case 8:
+                    _context4.prev = 8;
+                    _context4.t0 = _context4["catch"](1);
+                    this.error = _context4.t0;
+
+                  case 11:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this, [[1, 8]]);
+          }));
+        }
+      }, {
+        key: "capture",
+        value: function capture() {
+          this.image = this.canvas.nativeElement.toDataURL("image/png"); //this.drawImageToCanvas(this.video.nativeElement);
+          //console.log(this.canvas.nativeElement.toDataURL("image/png"));
+          //this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
+
+          this.isCaptured = true;
+        }
+      }, {
+        key: "removeCurrent",
+        value: function removeCurrent() {
+          this.isCaptured = false;
+        }
+      }, {
+        key: "setPhoto",
+        value: function setPhoto(idx) {
+          this.isCaptured = true;
+          var image = new Image();
+          image.src = this.captures[idx];
+          this.drawImageToCanvas(image);
+        }
+      }, {
+        key: "drawImageToCanvas",
+        value: function drawImageToCanvas(image) {
+          this.canvas.nativeElement.getContext("2d").drawImage(image, 0, 0, this.WIDTH, this.HEIGHT);
+        }
       }]);
 
       return LoginPage;
@@ -484,6 +582,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }];
     };
 
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"])("video")], LoginPage.prototype, "video", void 0);
+    Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"])("canvas")], LoginPage.prototype, "canvas", void 0);
     LoginPage = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
       selector: 'app-login',
       template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(

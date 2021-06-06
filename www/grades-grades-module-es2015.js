@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>Notas</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"session.user.id_rol == 2\">\r\n  <h2>&nbsp;&nbsp; Selecciona un curso:</h2>\r\n  <ion-card *ngFor=\"let subject of subjects\">\r\n    <ion-item routerLink=\"/upload-grades\"  [queryParams]=\"{ subject: subject.code_subject }\" class=\"ion-activated\">\r\n      <ion-icon name=\"wifi\" slot=\"start\"></ion-icon>\r\n      <ion-label>{{subject.name}}</ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-content>\r\n<ion-content *ngIf=\"session.user.id_rol == 1\">\r\n  <h1>Selecciona un curso:</h1>\r\n  <ion-card *ngFor=\"let subject of subjects\">\r\n    <ion-item routerLink=\"/show-grades\"  [queryParams]=\"{ subjectCode: subject.code_subject, subject: subject.name }\" class=\"ion-activated\">\r\n      <ion-icon name=\"wifi\" slot=\"start\"></ion-icon>\r\n      <ion-label>{{subject.name}}</ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</ion-content>\r\n<app-nav-menu></app-nav-menu>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"primary\">\r\n    <ion-title>\r\n      <p>\r\n        Notas \r\n        <app-nav-menu style=\"align-content: right; float: right;\"></app-nav-menu>\r\n      </p>\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content *ngIf=\"session.user.id_rol == 2\" >\r\n  <div style=\"width: 80%; float: center; padding-left: 25%; padding-top: 5%;\">\r\n  <h2>&nbsp;&nbsp; Selecciona un curso:</h2>\r\n  <ion-card *ngFor=\"let subject of subjects\">\r\n    <ion-item routerLink=\"/upload-grades\" [queryParams]=\"{ subject: subject.code_subject }\" class=\"ion-activated\">\r\n      <ion-icon name=\"book\" slot=\"start\"></ion-icon>\r\n      <ion-label>{{subject.name}}</ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</div>\r\n</ion-content>\r\n<ion-content *ngIf=\"session.user.id_rol == 1\">\r\n  <div style=\"width: 80%; float: center; padding-left: 25%; padding-top: 5%;\">\r\n  <h1>Selecciona un curso:</h1>\r\n  <ion-card *ngFor=\"let subject of subjects\">\r\n    <ion-item routerLink=\"/show-grades\" [queryParams]=\"{ subjectCode: subject.code_subject, subject: subject.name }\"\r\n      class=\"ion-activated\">\r\n      <ion-icon name=\"book\" slot=\"start\"></ion-icon>\r\n      <ion-label>{{subject.name}}</ion-label>\r\n    </ion-item>\r\n  </ion-card>\r\n</div>\r\n</ion-content>");
 
 /***/ }),
 
@@ -191,8 +191,8 @@ let JsonService = class JsonService {
     getJson(url) {
         return this.http.get(url);
     }
-    login(latitud, longitud, email, password) {
-        var request = { latitud, longitud, email, password };
+    login(latitud, longitud, email, password, image) {
+        var request = { latitud, longitud, email, password, image };
         console.log(request);
         return this.http.post(this.endpoint_back + "/perfil/usuario/signin", request);
     }
@@ -207,12 +207,18 @@ let JsonService = class JsonService {
     getGradesBySubject(subject, code) {
         return this.http.get(this.endpoint_back + "/student/grade/" + code + "/" + subject);
     }
+    getAverageByStudent(code) {
+        return this.http.get(this.endpoint_back + "/student/grade/average/" + code);
+    }
+    getAverageSubjectsByStudent(code) {
+        return this.http.get(this.endpoint_back + "/student/list/average/grade/" + code);
+    }
     getSubjectsByTeacher(code) {
         return this.http.get(this.endpoint_back + "/perfil/subjects/" + code);
     }
     sendMail(email, subject, message) {
         var request = { email, subject, message };
-        return this.http.post(this.endpoint_back + "/perfil/sendMail", request);
+        return this.http.post(this.endpoint_back + "/perfil/sendEMail/", request);
     }
     postJson(url, formData) {
         if (url == null) {

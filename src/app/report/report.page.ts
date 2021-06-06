@@ -97,7 +97,7 @@ export class ReportPage implements OnInit {
 
   getSubjectsByTeacher(code) {
     try {
-      this.jsonService.getSubjectsByTeacher(code).subscribe((data) => {
+      this.jsonService.getSubjectsByTeacher(code, '').subscribe((data) => {
         this.subjects = data;
         this.session.subject = this.subjects;
         this.sessionService.setSessionLoggedIn(this.session);

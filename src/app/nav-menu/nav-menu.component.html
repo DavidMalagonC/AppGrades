@@ -6,19 +6,24 @@
     </ion-button>
 
 
-    <ion-button routerLink="/grades" (click)="selectGrades()" [ngClass]="{'white': grades}">
+    <ion-button routerLink="/grades" (click)="selectGrades()" [ngClass]="{'white': grades}" *ngIf="session.user.id_rol != 3">
       <selected-tab></selected-tab>
       <ion-icon name="book-outline"></ion-icon>
       <ion-label>Notas</ion-label>
       <ion-badge>6</ion-badge>
     </ion-button>
 
-   
-
-    <ion-button  routerLink="/report" (click)="selectReport()" [ngClass]="{'white': report}">
+    <ion-button  routerLink="/report" (click)="selectReport()" [ngClass]="{'white': report}" *ngIf="session.user.id_rol == 1">
+     <!--  *ngIf="session.user.id_rol == '2' ? false: true" -->
       <ion-icon name="bar-chart-outline"></ion-icon>
       <ion-label translucent>Reporte</ion-label>
     </ion-button>
+
+    <ion-button  routerLink="/subjects" (click)="selectReport()" [ngClass]="{'white': report}" *ngIf="session.user.id_rol == 3">
+      <!--  *ngIf="session.user.id_rol == '2' ? false: true" -->
+       <ion-icon name="bar-chart-outline"></ion-icon>
+       <ion-label translucent>Administrar cursos</ion-label>
+     </ion-button>
 
     <ion-button routerLink="/email" class="white">
       <ion-icon name="information-circle"></ion-icon>

@@ -2,33 +2,48 @@
   <ion-toolbar color="primary">
     <ion-title>
       <p>
-        Notas 
+        Notas
         <app-nav-menu style="align-content: right; float: right;"></app-nav-menu>
       </p>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="session.user.id_rol == 2" >
+<ion-content *ngIf="session.user.id_rol == 2">
+
   <div style="width: 80%; float: center; padding-left: 25%; padding-top: 5%;">
-  <h2>&nbsp;&nbsp; Selecciona un curso:</h2>
-  <ion-card *ngFor="let subject of subjects">
-    <ion-item routerLink="/upload-grades" [queryParams]="{ subject: subject.code_subject }" class="ion-activated">
-      <ion-icon name="book" slot="start"></ion-icon>
-      <ion-label>{{subject.name}}</ion-label>
+    <ion-item>
+      <ion-label>Periodo</ion-label>
+      <ion-select  (ionChange)="getSubjectsByTeacher( period.value)" #period [(ngModel)]="period.period" value="2021-1" placeholder="2021-1" >
+        <ion-select-option *ngFor="let period of periods" value="{{period.period}}">{{period.period}}</ion-select-option>
+      </ion-select>
     </ion-item>
-  </ion-card>
-</div>
+    <h2>&nbsp;&nbsp; Selecciona un curso:</h2>
+    <ion-text *ngIf="subjects == null || subjects.length == 0">No se encontro cursos para el periodo seleccionado</ion-text>
+    <ion-card *ngFor="let subject of subjects">
+      <ion-item routerLink="/upload-grades" [queryParams]="{ subject: subject.code_subject }" class="ion-activated">
+        <ion-icon name="book" slot="start"></ion-icon>
+        <ion-label>{{subject.name}}</ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
 </ion-content>
 <ion-content *ngIf="session.user.id_rol == 1">
   <div style="width: 80%; float: center; padding-left: 25%; padding-top: 5%;">
-  <h1>Selecciona un curso:</h1>
-  <ion-card *ngFor="let subject of subjects">
-    <ion-item routerLink="/show-grades" [queryParams]="{ subjectCode: subject.code_subject, subject: subject.name }"
-      class="ion-activated">
-      <ion-icon name="book" slot="start"></ion-icon>
-      <ion-label>{{subject.name}}</ion-label>
+    <ion-item>
+      <ion-label>Periodo</ion-label>
+      <ion-select  (ionChange)="getSubjectsByTeacher( period.value)" #period [(ngModel)]="period.period" value="2021-1" placeholder="2021-1" >
+        <ion-select-option *ngFor="let period of periods" value="{{period.period}}">{{period.period}}</ion-select-option>
+      </ion-select>
     </ion-item>
-  </ion-card>
-</div>
+    <h1>Selecciona un curso:</h1>
+    <ion-text *ngIf="subjects == null || subjects.length == 0">No se encontro cursos para el periodo seleccionado</ion-text>
+    <ion-card *ngFor="let subject of subjects">
+      <ion-item routerLink="/show-grades" [queryParams]="{ subjectCode: subject.code_subject, subject: subject.name }"
+        class="ion-activated">
+        <ion-icon name="book" slot="start"></ion-icon>
+        <ion-label>{{subject.name}}</ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
 </ion-content>
