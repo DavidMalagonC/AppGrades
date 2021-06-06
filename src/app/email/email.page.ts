@@ -21,7 +21,7 @@ export class EmailPage implements OnInit {
 
   sendMail(subject, message){
     try {
-      this.jsonService.sendMail("cristian-ramirez1@upc.edu.co", subject, message).subscribe((data) => {
+      this.jsonService.sendMail("david-malagon@upc.edu.co", subject, message).subscribe((data) => {
         this.response = data;
         this.alertService.successfulAlert(this.response.msg);
       }, (error) => {

@@ -92,8 +92,8 @@ export class LoginPage implements OnInit {
 
   }
 
-  WIDTH = 640;
-  HEIGHT = 480;
+  WIDTH = 400;
+  HEIGHT = 400;
 
   @ViewChild("video")
   public video: ElementRef;
@@ -130,8 +130,10 @@ export class LoginPage implements OnInit {
 
   capture() {
     this.image = this.canvas.nativeElement.toDataURL("image/png")
-    //this.drawImageToCanvas(this.video.nativeElement);
-    //console.log(this.canvas.nativeElement.toDataURL("image/png"));
+    this.drawImageToCanvas(this.video.nativeElement);
+    this.image = this.canvas.nativeElement.toDataURL("image/png")
+    console.log(this.image);
+    this.image =":(";
     //this.captures.push(this.canvas.nativeElement.toDataURL("image/png"));
     this.isCaptured = true;
   }

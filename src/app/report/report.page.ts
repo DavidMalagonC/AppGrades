@@ -102,11 +102,6 @@ export class ReportPage implements OnInit {
     return parseInt(number);
   }
 
-  average(){
-    return parseInt(number);
-  }
-
-
   getSubjectsByTeacher(code) {
     try {
       this.jsonService.getSubjectsByTeacher(code, '').subscribe((data) => {
