@@ -12,12 +12,12 @@
   <div class="center2">
     <!-- <h1>&nbsp;Promedio acumulado</h1>
     <canvas id="realtime" height="300px">{{ chart }}</canvas> -->
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>Periodo</ion-label>
       <ion-select  #period value="2021-1" placeholder="2021-1" >
         <ion-select-option *ngFor="let period of periods" value="{{period.period}}">{{period.period}}</ion-select-option>
       </ion-select>
-    </ion-item>
+    </ion-item> -->
     <ion-card>
       <ion-card-header>
         <ion-card-title color="primary">Promedio General</ion-card-title>
@@ -26,14 +26,14 @@
       <ion-card-content>
         <ion-item class="ion-activated">
           <ion-text color="secondary">
-            <h1>{{average}}</h1>
+            <h1>{{toInt(average)+1}}</h1>
           </ion-text>
         </ion-item>
       </ion-card-content>
     </ion-card>
     <ion-card>
       <ion-card-header>
-        <ion-card-title color="primary">Promedio por curso</ion-card-title>
+        <ion-card-title color="primary">Cursos aprobados</ion-card-title>
 
       </ion-card-header>
       <ion-card-content>
@@ -42,9 +42,13 @@
             <h1>{{subject.Materia}}: &nbsp;</h1>
           </ion-text>
           <ion-text color="success">
-            <h2>{{subject.Promedio}}</h2>
+            <h2>{{toInt(subject.Promedio) }} (3C)</h2>
           </ion-text>
         </ion-item>
+        <p></p>
+        <ion-text color="primary">
+          <h1>Total creditos aprobados: (9C)</h1>
+        </ion-text>
       </ion-card-content>
     </ion-card>
 </div>

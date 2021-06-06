@@ -96,6 +96,17 @@ export class ReportPage implements OnInit {
     });
   }
 
+
+
+  toInt(number){
+    return parseInt(number);
+  }
+
+  average(){
+    return parseInt(number);
+  }
+
+
   getSubjectsByTeacher(code) {
     try {
       this.jsonService.getSubjectsByTeacher(code, '').subscribe((data) => {
